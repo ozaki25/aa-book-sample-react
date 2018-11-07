@@ -9,7 +9,24 @@ class Form extends React.Component {
       age: '',
       gender: '',
     };
+    this.inputId = React.createRef();
+    this.inputName = React.createRef();
+    this.inputAge = React.createRef();
+    this.inputGender = React.createRef();
   }
+
+  onClick = () => {
+    const { onClickRegister } = this.props;
+    const {
+      id, name, age, gender,
+    } = this.state;
+    onClickRegister({
+      id,
+      name,
+      age,
+      gender,
+    });
+  };
 
   render() {
     const {
@@ -19,25 +36,47 @@ class Form extends React.Component {
       <form>
         <label htmlFor="input-id">
           ID
-          <input id="input-id" value={id} readOnly />
+          <input
+            id="input-id"
+            value={id}
+            readOnly
+            ref={this.inputId}
+            onChange={e => this.setState({ id: e.target.value })}
+          />
         </label>
         <label htmlFor="input-name">
           名前
-          <input id="input-name" valie={name} />
+          <input
+            id="input-name"
+            valie={name}
+            ref={this.inputName}
+            onChange={e => this.setState({ name: e.target.value })}
+          />
         </label>
         <label htmlFor="input-age">
           年齢
-          <input id="input-age" type="number" value={age} />
+          <input
+            id="input-age"
+            type="number"
+            value={age}
+            ref={this.inputAge}
+            onChange={e => this.setState({ age: e.target.value })}
+          />
         </label>
         <label htmlFor="input-gender">
           性別
-          <select id="input-gender" value={gender}>
+          <select
+            id="input-gender"
+            value={gender}
+            ref={this.inputGender}
+            onChange={e => this.setState({ gender: e.target.value })}
+          >
             <option value="" />
-            <option value="0">男性</option>
-            <option value="1">女性</option>
+            <option value="男性">男性</option>
+            <option value="女性">女性</option>
           </select>
         </label>
-        <button id="button-register" type="button">
+        <button id="button-register" type="button" onClick={this.onClick}>
           登録
         </button>
       </form>
