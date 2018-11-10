@@ -24,16 +24,6 @@ export const postPerson = async (person) => {
   }
 };
 
-export const getPerson = async (id) => {
-  try {
-    const res = await fetch(`${url.persons}/${id}`);
-    return res.json();
-  } catch (e) {
-    console.error(e);
-    return null;
-  }
-};
-
 export const putPerson = async (id, person) => {
   try {
     const res = await fetch(`${url.persons}/${id}`, {
