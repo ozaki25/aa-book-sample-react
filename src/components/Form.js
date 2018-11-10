@@ -26,6 +26,12 @@ class Form extends React.Component {
       age,
       gender,
     });
+    this.setState({
+      id: '',
+      name: '',
+      age: '',
+      gender: '',
+    });
   };
 
   render() {
@@ -48,7 +54,7 @@ class Form extends React.Component {
           名前
           <input
             id="input-name"
-            valie={name}
+            value={name}
             ref={this.inputName}
             onChange={e => this.setState({ name: e.target.value })}
           />
