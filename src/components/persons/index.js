@@ -53,7 +53,7 @@ class Persons extends React.Component {
     const { personList, editingPerson } = this.state;
     return (
       <div>
-        <Form defaultPerson={editingPerson} onClickRegister={this.onClickRegister} />
+        <Form editingPerson={editingPerson} onClickRegister={this.onClickRegister} />
         <Table
           personList={personList}
           onClickEdit={this.onClickEdit}

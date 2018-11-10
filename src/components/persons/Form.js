@@ -16,17 +16,8 @@ class Form extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    const {
-      id, name, age, gender,
-    } = nextProps.defaultPerson;
-    return id === prevState.id
-      ? null
-      : {
-        id,
-        name,
-        age,
-        gender,
-      };
+    const { editingPerson } = nextProps;
+    return editingPerson.id === prevState.id ? null : { ...editingPerson };
   }
 
   onClick = () => {
