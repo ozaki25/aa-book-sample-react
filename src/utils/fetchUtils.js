@@ -50,13 +50,11 @@ export const putPerson = async (id, person) => {
 
 export const deletePerson = async (id) => {
   try {
-    const res = await fetch(`${url.persons}/${id}`, {
+    await fetch(`${url.persons}/${id}`, {
       method: 'DELETE',
       headers: { 'Content-Type': 'application/json' },
     });
-    return res.json();
   } catch (e) {
     console.error(e);
-    return null;
   }
 };
