@@ -8,12 +8,17 @@ class Table extends React.Component {
   }
 
   render() {
-    const { personList, onClickDelete } = this.props;
+    const { personList, onClickEdit, onClickDelete } = this.props;
     return (
       <table border="1">
         <tbody>
           {personList.map(person => (
-            <TableRow key={person.id} person={person} onClickDelete={onClickDelete} />
+            <TableRow
+              key={person.id}
+              person={person}
+              onClickEdit={onClickEdit}
+              onClickDelete={onClickDelete}
+            />
           ))}
         </tbody>
       </table>

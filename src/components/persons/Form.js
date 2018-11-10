@@ -15,6 +15,20 @@ class Form extends React.Component {
     this.inputGender = React.createRef();
   }
 
+  static getDerivedStateFromProps(nextProps, prevState) {
+    const {
+      id, name, age, gender,
+    } = nextProps.defaultPerson;
+    return id === prevState.id
+      ? null
+      : {
+        id,
+        name,
+        age,
+        gender,
+      };
+  }
+
   onClick = () => {
     const { onClickRegister } = this.props;
     const {
