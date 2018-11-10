@@ -14,29 +14,41 @@ app.use((req, res, next) => {
 });
 
 app.get('/persons', (req, res) => {
-  console.log(persons);
   res.send(persons);
 });
 
 app.post('/persons', (req, res) => {
-  const id = Date.now();
-  const person = { ...req.body, id };
+  const person = { ...req.body, id: Date.now().toString() };
   persons = [...persons, person];
-  console.log(person);
   return res.send(person);
 });
 
-app.put('/persons', (req, res) => {
+app.get('/persons/:id', (req, res) => {
+  const { id } = req.params;
+  const person = persons.find(p => p.id === id);
+  res.send(person);
+});
+
+app.put('/persons/:id', (req, res) => {
+  const { id } = req.params;
   const person = req.body;
-  console.log(person);
-  console.log(persons);
-  persons = persons.map((p) => {
-    console.log(p.id);
-    console.log(person.id);
-    return p.id === person.id ? person : p;
-  });
-  console.log(persons);
+  persons = persons.find(p => p.id === id)
+    ? persons.map(p => (p.id === id ? person : p))
+    : [...persons, person];
   return res.send(person);
+});
+
+app.patch('/persons/:id', (req, res) => {
+  const { id } = req.params;
+  const person = req.body;
+  persons = persons.map(p => (p.id === id ? { ...p, ...person } : p));
+  return res.send(person);
+});
+
+app.delete('/persons/:id', (req, res) => {
+  const { id } = req.params;
+  persons = persons.filter(p => p.id !== id);
+  res.send();
 });
 
 app.listen(port, () => {
