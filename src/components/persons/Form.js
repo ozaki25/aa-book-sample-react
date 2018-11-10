@@ -3,12 +3,7 @@ import React from 'react';
 class Form extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      id: '',
-      name: '',
-      age: '',
-      gender: '',
-    };
+    this.state = { ...props.editingPerson };
     this.inputId = React.createRef();
     this.inputName = React.createRef();
     this.inputAge = React.createRef();
@@ -21,7 +16,7 @@ class Form extends React.Component {
   }
 
   onClick = () => {
-    const { onClickRegister } = this.props;
+    const { onClickRegister, editingPerson } = this.props;
     const {
       id, name, age, gender,
     } = this.state;
@@ -31,12 +26,7 @@ class Form extends React.Component {
       age,
       gender,
     });
-    this.setState({
-      id: '',
-      name: '',
-      age: '',
-      gender: '',
-    });
+    this.setState({ ...editingPerson });
   };
 
   render() {
