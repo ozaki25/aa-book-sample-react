@@ -50,7 +50,7 @@ class Persons extends React.Component {
   render() {
     const { personList, editingPerson } = this.state;
     return (
-      <div>
+      <div className="container">
         <div className="panel panel-default">
           <div className="panel-body">
             <Form editingPerson={editingPerson} onClickRegister={this.onClickRegister} />
