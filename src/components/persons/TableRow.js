@@ -1,6 +1,5 @@
 import React from 'react';
-import EditButton from './EditButton';
-import DeleteButton from './DeleteButton';
+import Button from './Button';
 
 const TableRow = ({ person, onClickEdit, onClickDelete }) => (
   <tr>
@@ -9,10 +8,10 @@ const TableRow = ({ person, onClickEdit, onClickDelete }) => (
     <td>{person.age}</td>
     <td>{person.gender}</td>
     <td>
-      <EditButton onClick={() => onClickEdit(person)} />
+      <Button onClick={() => onClickEdit(person)}>編集</Button>
     </td>
     <td>
-      <DeleteButton onClick={() => onClickDelete(person.id)} />
+      <Button onClick={() => onClickDelete(person.id)}>削除</Button>
     </td>
   </tr>
 );

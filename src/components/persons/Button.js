@@ -1,9 +1,9 @@
 import React from 'react';
 
-const DeleteButton = ({ onClick }) => (
+const Button = ({ onClick, children }) => (
   <button className="btn btn-xs btn-default" type="button" onClick={onClick}>
-    削除
+    {children}
   </button>
 );
 
-export default DeleteButton;
+export default Button;
