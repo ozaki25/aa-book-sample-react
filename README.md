@@ -29,3 +29,8 @@ yarn start
 # or
 npm start
 ```
+
+## Demo
+
+![demo](/uploads/548b97ed15a1d45d7e663ad69a3994d7/demo.gif)
+
