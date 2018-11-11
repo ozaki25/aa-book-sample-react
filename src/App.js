@@ -1,6 +1,12 @@
 import React from 'react';
-import Persons from './components/persons';
+import { Provider } from 'react-redux';
+import Persons from './containers/Persons';
+import store from './modules/createStore';
 
-const App = () => <Persons />;
+const App = () => (
+  <Provider store={store}>
+    <Persons />
+  </Provider>
+);
 
 export default App;

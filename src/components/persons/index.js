@@ -1,7 +1,6 @@
 import React from 'react';
 import Form from './Form';
 import Table from './Table';
-import { getPersons, postPerson, putPerson, deletePerson } from '../../utils/fetchUtils';
 
 const initPerson = {
   id: '',
@@ -14,41 +13,35 @@ class Persons extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      personList: [],
       editingPerson: initPerson,
     };
   }
 
   componentDidMount() {
-    this.reload();
+    this.props.getPersons();
   }
 
-  onClickRegister = async person => {
+  onClickRegister = person => {
+    const { postPerson, putPerson } = this.props;
     if (person.id) {
-      await putPerson(person.id, person);
+      putPerson(person.id, person);
     } else {
-      await postPerson(person);
+      postPerson(person);
     }
     this.setState({ editingPerson: initPerson });
-    this.reload();
   };
 
   onClickEdit = person => {
     this.setState({ editingPerson: person });
   };
 
-  onClickDelete = async id => {
-    await deletePerson(id);
-    this.reload();
+  onClickDelete = id => {
+    this.props.deletePerson(id);
   };
 
-  async reload() {
-    const personList = await getPersons();
-    this.setState({ personList });
-  }
-
   render() {
-    const { personList, editingPerson } = this.state;
+    const { personList } = this.props;
+    const { editingPerson } = this.state;
     return (
       <div className="container">
         <div className="panel panel-default">
