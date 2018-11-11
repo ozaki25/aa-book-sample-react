@@ -1,6 +1,6 @@
 # aa_sample_react
 
-## Get Startted
+## Get Started
 
 ### install
 
