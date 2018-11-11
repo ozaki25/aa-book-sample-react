@@ -10,7 +10,7 @@ export const getPersons = async () => {
   }
 };
 
-export const postPerson = async (person) => {
+export const postPerson = async person => {
   try {
     const res = await fetch(url.persons, {
       method: 'POST',
@@ -38,7 +38,7 @@ export const putPerson = async (id, person) => {
   }
 };
 
-export const deletePerson = async (id) => {
+export const deletePerson = async id => {
   try {
     await fetch(`${url.persons}/${id}`, {
       method: 'DELETE',

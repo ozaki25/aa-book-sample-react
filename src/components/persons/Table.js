@@ -10,7 +10,17 @@ class Table extends React.Component {
   render() {
     const { personList, onClickEdit, onClickDelete } = this.props;
     return (
-      <table border="1">
+      <table className="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>名前</th>
+            <th>年齢</th>
+            <th>性別</th>
+            <th />
+            <th />
+          </tr>
+        </thead>
         <tbody>
           {personList.map(person => (
             <TableRow

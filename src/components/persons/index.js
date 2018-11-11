@@ -1,9 +1,7 @@
 import React from 'react';
 import Form from './Form';
 import Table from './Table';
-import {
-  getPersons, postPerson, putPerson, deletePerson,
-} from '../../utils/fetchUtils';
+import { getPersons, postPerson, putPerson, deletePerson } from '../../utils/fetchUtils';
 
 const initPerson = {
   id: '',
@@ -25,7 +23,7 @@ class Persons extends React.Component {
     this.reload();
   }
 
-  onClickRegister = async (person) => {
+  onClickRegister = async person => {
     if (person.id) {
       await putPerson(person.id, person);
     } else {
@@ -35,11 +33,11 @@ class Persons extends React.Component {
     this.reload();
   };
 
-  onClickEdit = (person) => {
+  onClickEdit = person => {
     this.setState({ editingPerson: person });
   };
 
-  onClickDelete = async (id) => {
+  onClickDelete = async id => {
     await deletePerson(id);
     this.reload();
   };
@@ -53,7 +51,11 @@ class Persons extends React.Component {
     const { personList, editingPerson } = this.state;
     return (
       <div>
-        <Form editingPerson={editingPerson} onClickRegister={this.onClickRegister} />
+        <div className="panel panel-default">
+          <div className="panel-body">
+            <Form editingPerson={editingPerson} onClickRegister={this.onClickRegister} />
+          </div>
+        </div>
         <Table
           personList={personList}
           onClickEdit={this.onClickEdit}
