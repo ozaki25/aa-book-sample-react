@@ -5,6 +5,8 @@ export const GET_ALL = 'PERSONS/GET_ALL';
 export const POST = 'PERSONS/POST';
 export const PUT = 'PERSONS/PUT';
 export const DELETE = 'PERSONS/DELETE';
+export const EDIT = 'PERSONS/EDIT';
+export const EDITED = 'PERSONS/EDITED';
 
 // ActionCreators
 export function getAllDone(personList) {
@@ -39,9 +41,23 @@ export function destroy(id) {
   };
 }
 
+export function edit(person) {
+  return { type: EDIT, payload: { person } };
+}
+
+export function edited() {
+  return { type: EDITED };
+}
+
 // Reducer
 const initialState = {
   personList: [],
+  editingPerson: {
+    id: '',
+    name: '',
+    age: '',
+    gender: '',
+  },
 };
 
 export default function reducer(state = initialState, action) {
@@ -49,6 +65,10 @@ export default function reducer(state = initialState, action) {
   switch (type) {
     case GET_ALL:
       return { ...state, personList: payload.personList };
+    case EDIT:
+      return { ...state, editingPerson: payload.person };
+    case EDITED:
+      return { ...state, editingPerson: initialState.editingPerson };
     default:
       return state;
   }

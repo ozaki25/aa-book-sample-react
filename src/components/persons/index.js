@@ -2,37 +2,23 @@ import React from 'react';
 import Form from './Form';
 import Table from './Table';
 
-const initPerson = {
-  id: '',
-  name: '',
-  age: '',
-  gender: '',
-};
-
 class Persons extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      editingPerson: initPerson,
-    };
-  }
-
   componentDidMount() {
     this.props.getPersons();
   }
 
   onClickRegister = person => {
-    const { postPerson, putPerson } = this.props;
+    const { postPerson, putPerson, editedPerson } = this.props;
     if (person.id) {
       putPerson(person.id, person);
     } else {
       postPerson(person);
     }
-    this.setState({ editingPerson: initPerson });
+    editedPerson();
   };
 
   onClickEdit = person => {
-    this.setState({ editingPerson: person });
+    this.props.editPerson(person);
   };
 
   onClickDelete = id => {
@@ -40,8 +26,7 @@ class Persons extends React.Component {
   };
 
   render() {
-    const { personList } = this.props;
-    const { editingPerson } = this.state;
+    const { personList, editingPerson } = this.props;
     return (
       <div className="container">
         <div className="panel panel-default">
