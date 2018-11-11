@@ -1,18 +1,3 @@
 {
-  "extends": "airbnb",
-  "parser": "babel-eslint",
-  "rules": {
-    "jsx-a11y/anchor-is-valid": 0,
-    "import/no-extraneous-dependencies": 0,
-    "no-nested-ternary": 0,
-    "no-alert": 0,
-    "no-console": 0,
-    "react/prop-types": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "max-len": [1, { "code": 100 }],
-    "react/no-array-index-key": [1]
-  },
-  "env": {
-    "browser": true
-  }
+  "extends": "react-app"
 }
