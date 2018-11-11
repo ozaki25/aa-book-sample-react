@@ -18,12 +18,7 @@ class Form extends React.Component {
   onClick = () => {
     const { onClickRegister, editingPerson } = this.props;
     const { id, name, age, gender } = this.state;
-    onClickRegister({
-      id,
-      name,
-      age,
-      gender,
-    });
+    onClickRegister({ id, name, age, gender });
     this.setState({ ...editingPerson });
   };
 
