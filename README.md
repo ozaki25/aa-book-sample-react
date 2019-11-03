@@ -5,7 +5,7 @@
 ### install
 
 ```bash
-git clone http://52.196.135.187/randd/aa_sample_react.git
+git clone https://github.com/ozaki25/aa-book-sample-react.git
 cd aa_sample_react
 yarn
 # or
